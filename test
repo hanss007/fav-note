@@ -1,0 +1,51 @@
+import React, { Component } from 'react';
+
+class MyComponent extends Component {
+  state = {
+    tasks: this.props.tasks,
+    draft: '',
+  };
+
+  UpdateDraft = (event) => {
+    this.setState({ draft: event.target.value });
+  };
+
+  addMatch = () => {};
+
+  render() {
+    const { title } = this.state;
+    return (
+      <div>
+        <h1>{title}</h1>
+
+        <div>
+          <input type="text" placeholder="TEAM 1" onChange={this.UpdateDraft} />
+          <input type="number" placeholder="SCORE 1" onChange={this.UpdateDraft} />
+          <input type="number" placeholder="SCORE 2" onChange={this.UpdateDraft} />
+          <input type="text" placeholder="TEAM 2" onChange={this.UpdateDraft} />
+          <button>Add</button>
+        </div>
+      </div>
+    );
+  }
+}
+
+class App extends Component {
+  myMetch = [
+    {
+      team1: 'Madness',
+      score1: 2,
+      score2: 1,
+      team2: 'DreamTeam',
+    },
+  ];
+  render() {
+    return (
+      <div>
+        <MyComponent title="Moje mecze" tasks={this.myMetch} />
+      </div>
+    );
+  }
+}
+
+export default App;
